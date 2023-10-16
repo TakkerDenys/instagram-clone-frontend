@@ -33,7 +33,7 @@ jobs:
           CI: false
 
       - name: Install PM2
-        run: npm install -g pm2
+        run: sudo npm install -g pm2
 
       - name: Deploy code Server
         uses: easingthemes/ssh-deploy@main
