@@ -9,7 +9,7 @@ const navMenu=useNavigate();
 
 const itemClick=(title)=>{
     setActiveTab(title)
-    if(title==="Профіль користувача"){
+    if(title==="Профіль"){
         navMenu("/username")
     }else if(title==="Головна"){
         navMenu("/")
