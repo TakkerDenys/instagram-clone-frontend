@@ -21,7 +21,7 @@ const itemClick=(title)=>{
             <div className='flex flex-col justify-between h-full px-10'>
                 <div>
                 <div className='pt-10'>
-                    <img className='w-40' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png" alt="" />
+                    <img className='w-40' src="https://finance.bigmir.net/i/28/13/60/5/2813605/8e19b8c922a77eb0d4ea75655172290e-quality_75Xresize_crop_1Xallow_enlarge_0Xw_740Xh_400.jpg" alt="" />
                 </div>
                 <div className='mt-10'>
                     {menu.map((item)=> 
