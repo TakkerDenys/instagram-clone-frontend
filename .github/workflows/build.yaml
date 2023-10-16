@@ -53,6 +53,6 @@ jobs:
           ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
           export PATH=$PATH:/home/denys/.nvm/versions/node/v18.18.2/bin
           pm2 kill
-          cd /home/ubuntu/instagram-clone-frontend/
+          cd /home/denys/instagram-clone-frontend/
           pm2 start npm --name "instagram-clone-frontend" -- start -- --port 3000
           '
