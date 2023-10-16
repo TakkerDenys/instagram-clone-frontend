@@ -45,7 +45,7 @@ jobs:
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/node_modules/"
 
-      - name: PM2 restart
+      - name: PM2 restarts
         run: |
           touch key.pem
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
