@@ -17,3 +17,9 @@
 .delete:hover .dots{
     background-color: rgb(255,255,255);
 }
+.add_comment{
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: .5rem .7rem;
+}
