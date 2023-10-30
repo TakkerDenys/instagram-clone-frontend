@@ -26,7 +26,7 @@ const Router = () => {
       {(location.pathname === "/login" || location.pathname === "/singup") && (
         <div>
           <Routes>
-            <Route path="/signup" element={<AuthPage />}></Route>
+            <Route path="/singup" element={<AuthPage />}></Route>
             <Route path="/login" element={<AuthPage />}></Route>
           </Routes>
         </div>
