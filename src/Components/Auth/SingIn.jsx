@@ -47,7 +47,7 @@ export const SignIn = () => {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <img className="mb-5" src="https://i.imgur.com/zqpwkLQ.png" alt="" />
+          <img className="mb-5" src="./img/Instagran_logo.png" alt="" />
 
           <Formik
             initialValues={initialValues}
@@ -62,7 +62,7 @@ export const SignIn = () => {
                       isInvalid={form.errors.email && form.touched.email}
                     >
                       <Input
-                        className="w-full"
+                        className="w-full text"
                         {...field}
                         id="email"
                         placeholder="Номер телефону або Email"

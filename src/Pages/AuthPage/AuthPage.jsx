@@ -16,7 +16,6 @@ const AuthPage = () => {
           </div>
         </div>
         <div className="w-[40vw] lg:w-[23vw]">
-
             {location.pathname==="/login" ? <SingIn /> : <SingUp />}
         </div>
       </div>

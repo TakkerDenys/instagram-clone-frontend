@@ -39,7 +39,7 @@ const SingUp = () => {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <img className="mb-5" src="https://i.imgur.com/zqpwkLQ.png" alt="" />
+          <img className="mb-5" src="./img/Instagran_logo.png" alt="" />
 
           <Formik
             initialValues={initialValues}

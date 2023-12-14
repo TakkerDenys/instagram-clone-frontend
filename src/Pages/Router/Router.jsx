@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import MainPage from "../MainPage/MainPage";
 import Profile from "../Profile/Profile";
 import AuthPage from "../AuthPage/AuthPage";
+import Story from "../Story/Story";
 
 const Router = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const Router = () => {
             <Routes>
               <Route path="/" element={<MainPage />}></Route>
               <Route path="/username" element={<Profile />}></Route>
+              <Route path="/story" element={<Story />}></Route>
             </Routes>
           </div>
         </div>
