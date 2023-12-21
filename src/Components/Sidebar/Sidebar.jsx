@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { IoReorderThreeOutline } from "react-icons/io5";
-import { menu } from "./SidebarSetting";
+import { menu, exit } from "./SidebarSetting";
 import { useNavigate } from "react-router-dom";
 import MainPostFill from "../../Components/MainPosts/MainPostFill";
 import { useDisclosure } from "@chakra-ui/react";
@@ -20,6 +19,8 @@ const Sidebar = () => {
       navMenu("/");
     } else if (title === "Створити") {
       onOpen();
+    } else if (title === "Вихід") {
+      navMenu("/login");
     }
     if (title === "Пошук") {
       setIsSearchVisible(true);
@@ -28,37 +29,62 @@ const Sidebar = () => {
 
   return (
     <div className="sticky top-0 h-[100vh] flex">
-      <div className={`flex flex-col justify-between h-full ${activeTab==="Пошук"?"px-2":"px-10"}`}>
-        {<div>
-          {activeTab !== "Пошук" && <div className="pt-10">
-            <img
-              className="w-40"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
-              alt=""
-            />
-          </div>}
-          <div className="mt-10">
-            {menu.map((item) => (
-              <div
-                onClick={() => itemClick(item.title)}
-                className="flex items-center mb-5 cursor-pointer text-lg"
-              >
-                {activeTab === item.title ? item.activeIcon : item.icon}
-                {activeTab !== "Пошук" && <p
-                  className={`${
-                    activeTab === item.title ? "font-bold" : "font-semibolt"
-                  }`}
-                >
-                  {item.title}
-                </p>}
+      <div
+        className={`flex flex-col justify-between h-full ${
+          activeTab === "Пошук" ? "px-2" : "px-10"
+        }`}
+      >
+        {
+          <div>
+            {activeTab !== "Пошук" && (
+              <div className="pt-10">
+                <img
+                  className="w-40"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1280px-Instagram_logo.svg.png"
+                  alt=""
+                />
               </div>
-            ))}
+            )}
+            <div className="mt-10">
+              {menu.map((item) => (
+                <div
+                  onClick={() => itemClick(item.title)}
+                  className="flex items-center mb-5 cursor-pointer text-lg"
+                >
+                  {activeTab === item.title ? item.activeIcon : item.icon}
+                  {activeTab !== "Пошук" && (
+                    <p
+                      className={`${
+                        activeTab === item.title ? "font-bold" : "font-semibolt"
+                      }`}
+                    >
+                      {item.title}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>}
-        <div className="flex item-center cursor-pointer pb-10">
-          <IoReorderThreeOutline className="text-2xl" />
-          {activeTab !== "Пошук" && <p className="ml-5">Більше</p>}
-        </div>
+        }
+       <div className="flex item-center cursor-pointer pb-10 mt-10">
+              {exit.map((item) => (
+                <div
+                  onClick={() => itemClick(item.title)}
+                  className="flex items-center mb-5 cursor-pointer text-lg"
+                >
+                  {activeTab === item.title ? item.activeIcon : item.icon}
+                  {activeTab !== "Пошук" && (
+                    <p
+                      className={`${
+                        activeTab === item.title ? "font-bold" : "font-semibolt"
+                      }`}
+                    >
+                      {item.title}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
       </div>
       <MainPostFill onClose={onClose} isOpen={isOpen} />
       {isSearchVisible && <SearchSetting />}

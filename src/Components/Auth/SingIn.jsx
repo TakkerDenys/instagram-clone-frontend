@@ -10,37 +10,31 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-const validation = Yup.object().shape({
-  email: Yup.string()
-    .required("Обов'язково")
-    .test(
-      "email-or-phone",
-      "Введіть коректний номер телефону або Email",
-      (value) => {
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        const phoneRegex = /^[0-9]{10}$/;
-        return emailRegex.test(value) || phoneRegex.test(value);
-      }
-    ),
-  password: Yup.string()
-    .min(8, "Пароль має бути довше 8 символів")
-    .required("Обов'язково"),
+const validationSchema = Yup.object().shape({
+  userPhoneNumber: Yup.string()
+    .matches(/^\d{10}$/, "Неправильний номер телефону")
+    .required("Обовʼязково"),
+  userPassword: Yup.string()
+    .min(8, "Пароль мусить містити більше 8 символів")
+    .required("Обовʼязково"),
 });
 
-export const SignIn = () => {
+export const UserSignIn = () => {
   const initialValues = {
-    email: "",
-    password: "",
+    userPhoneNumber: "",
+    userPassword: "",
   };
-  const navigate = useNavigate();
-  const handleSubmit = (values) => {
-    console.log("values: ", values);
+  const navigation = useNavigate();
+
+  const handleSubmit = (formValues) => {
+    console.log("formValues: ", formValues);
   };
-  const handleNavigate = () => navigate("/singup");
+
+  const navigateToSignUp = () => navigation("/singup");
 
   return (
     <div>
-      <div className="border">
+      <div className="user-border">
         <Box
           p={8}
           display={"flex"}
@@ -52,39 +46,46 @@ export const SignIn = () => {
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={validation}
+            validationSchema={validationSchema}
           >
-            {(formAppearance) => (
+            {(formikProps) => (
               <Form className="space-y-2">
-                <Field name="email">
+                <Field name="userPhoneNumber">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.email && form.touched.email}
+                      isInvalid={
+                        form.errors.userPhoneNumber &&
+                        form.touched.userPhoneNumber
+                      }
                     >
                       <Input
                         className="w-full text"
                         {...field}
-                        id="email"
-                        placeholder="Номер телефону або Email"
+                        id="userPhoneNumber"
+                        placeholder="Номер телефону"
                       />
-                      <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                      <FormErrorMessage>
+                        {form.errors.userPhoneNumber}
+                      </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
 
-                <Field name="password">
+                <Field name="userPassword">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.password && form.touched.password}
+                      isInvalid={
+                        form.errors.userPassword && form.touched.userPassword
+                      }
                     >
                       <Input
                         className="w-full"
                         {...field}
-                        id="password"
+                        id="userPassword"
                         placeholder="Пароль"
                       />
                       <FormErrorMessage>
-                        {form.errors.password}
+                        {form.errors.userPassword}
                       </FormErrorMessage>
                     </FormControl>
                   )}
@@ -94,7 +95,7 @@ export const SignIn = () => {
                   my={4}
                   colorScheme="blue"
                   type="submit"
-                  isLoading={formAppearance.isSubmitting}
+                  isLoading={formikProps.isSubmitting}
                 >
                   Увійти
                 </Button>
@@ -103,11 +104,11 @@ export const SignIn = () => {
           </Formik>
         </Box>
       </div>
-      <div className="border w-full border-slate-300 mt-5">
+      <div className="user-border w-full border-slate-300 mt-5">
         <p className="text-center py-2 text-sm">
           Не маєте облікового запису?
           <span
-            onClick={handleNavigate}
+            onClick={navigateToSignUp}
             className="ml-2 text-blue-500 cursor-pointer"
           >
             Зареєструйтеся
@@ -118,4 +119,4 @@ export const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default UserSignIn;

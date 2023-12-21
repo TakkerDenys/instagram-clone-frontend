@@ -10,111 +10,121 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-const validation = Yup.object().shape({
-  email: Yup.string().email("Не коректний Email").required("Обовʼязково"),
-  password: Yup.string()
+const validationSchema = Yup.object().shape({
+  userPhoneNumber: Yup.string()
+    .matches(/^\d{10}$/, "Неправильний номер телефону")
+    .required("Обовʼязково"),
+  userUsername: Yup.string().required("Обовʼязково"),
+  userName: Yup.string().required("Обовʼязково"),
+  userPassword: Yup.string()
     .min(8, "Пароль мусить містити більше 8 символів")
     .required("Обовʼязково"),
 });
 
-const SingUp = () => {
+const UserSignUp = () => {
   const initialValues = {
-    username: "",
-    name: "",
-    email: "",
-    password: "",
+    userUsername: "",
+    userName: "",
+    userPhoneNumber: "",
+    userPassword: "",
   };
-  const navigate = useNavigate();
-  const handleNavigate = () => navigate("/login");
-  const handleSubmit = (values) => {
-    console.log("values: ", values);
+  const navigation = useNavigate();
+
+  const navigateToLogin = () => navigation("/login");
+  const handleSubmit = (formValues) => {
+    console.log("formValues: ", formValues);
   };
 
   return (
     <div>
-      <div className="border">
+      <div className="user-border">
         <Box
           p={8}
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <img className="mb-5" src="./img/Instagran_logo.png" alt="" />
+          <img className="mb-5" src="./img/Instagran_logo.png" alt="Instagran Logo" />
 
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={validation}
+            validationSchema={validationSchema}
           >
-            {(formAppearance) => (
+            {(formikProps) => (
               <Form className="space-y-2">
                 <p className="text-center">
                   Зареєструйтеся, щоб переглядати світлини та відео від друзів.
                 </p>
 
-                <Field name="email">
+                <Field name="userPhoneNumber">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.email && form.touched.email}
+                      isInvalid={
+                        form.errors.userPhoneNumber &&
+                        form.touched.userPhoneNumber
+                      }
                     >
                       <Input
                         className="w-full"
                         {...field}
-                        id="email"
-                        placeholder="Номер телефону або Email"
-                      />
-                      <FormErrorMessage>{form.errors.email}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-
-                <Field name="username">
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={form.errors.username && form.touched.username}
-                    >
-                      <Input
-                        className="w-full"
-                        {...field}
-                        id="username"
-                        placeholder="Імʼя користувача"
+                        id="userPhoneNumber"
+                        placeholder="Номер телефону"
                       />
                       <FormErrorMessage>
-                        {form.errors.username}
+                        {form.errors.userPhoneNumber}
                       </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
 
-                <Field name="name">
+                <Field name="userUsername">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.name && form.touched.name}
+                      isInvalid={form.errors.userUsername && form.touched.userUsername}
                     >
                       <Input
                         className="w-full"
                         {...field}
-                        id="name"
-                        placeholder="Повне імʼя"
+                        id="userUsername"
+                        placeholder="Імʼя користувача"
                       />
-                      <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                      <FormErrorMessage>
+                        {form.errors.userUsername}
+                      </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
 
-                <Field name="password">
+                <Field name="userName">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.password && form.touched.password}
+                      isInvalid={form.errors.userName && form.touched.userName}
                     >
                       <Input
                         className="w-full"
                         {...field}
-                        id="password"
+                        id="userName"
+                        placeholder="Повне імʼя"
+                      />
+                      <FormErrorMessage>{form.errors.userName}</FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+
+                <Field name="userPassword">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.userPassword && form.touched.userPassword}
+                    >
+                      <Input
+                        className="w-full"
+                        {...field}
+                        id="userPassword"
                         placeholder="Пароль"
                       />
                       <FormErrorMessage>
-                        {form.errors.password}
+                        {form.errors.userPassword}
                       </FormErrorMessage>
                     </FormControl>
                   )}
@@ -132,7 +142,7 @@ const SingUp = () => {
                   my={4}
                   colorScheme="blue"
                   type="submit"
-                  isLoading={formAppearance.isSubmitting}
+                  isLoading={formikProps.isSubmitting}
                 >
                   Зареєструватися
                 </Button>
@@ -141,11 +151,11 @@ const SingUp = () => {
           </Formik>
         </Box>
       </div>
-      <div className="border w-full border-slate-300 mt-5">
+      <div className="user-border w-full border-slate-300 mt-5">
         <p className="text-center py-2 text-sm">
           У вас є обліковий запис?
           <span
-            onClick={handleNavigate}
+            onClick={navigateToLogin}
             className="ml-2 text-blue-500 cursor-pointer"
           >
             Увійдіть
@@ -156,4 +166,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+export default UserSignUp;
