@@ -35,7 +35,7 @@ const UserSignUp = () => {
 
   const handleSubmit = async (formValues) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/users/register', {
+      const response = await axios.post('http://94.153.144.18:8080/api/users/register', {
         phone: formValues.userPhoneNumber,
         login: formValues.userUsername,
         name: formValues.userName,
