@@ -12,7 +12,7 @@ import { GoLocation } from "react-icons/go";
 import "./MainPostFill.css";
 
 const MainPostFill = ({ onClose, isOpen }) => {
-  const [isDragOver, setIsDragOver] = useState(false);
+  const [setIsDragOver] = useState(false);
   const [file, setFile] = useState();
   const [caption, setCaption] = useState("");
   const handleDrop = (event) => {

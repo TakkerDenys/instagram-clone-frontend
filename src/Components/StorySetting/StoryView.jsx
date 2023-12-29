@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import StoryEvolve from "./StoryEvolve";
@@ -16,30 +16,29 @@ const StoryMedia = styled.img`
 `;
 
 const StoryView = ({ stories }) => {
-  const [curentStoryIndex, setCurentStoryIndex] = useState(0);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleNextStory = () => {
-    if (curentStoryIndex < stories.length - 1) {
-      setCurentStoryIndex(curentStoryIndex + 1);
-      setActiveIndex(activeIndex + 1);
-    } else if (curentStoryIndex === stories.length - 1) {
-      setCurentStoryIndex(0);
+  const handleNextStory = useCallback(() => {
+    if (currentStoryIndex < stories.length - 1) {
+      setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+      setActiveIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setCurrentStoryIndex(0);
       setActiveIndex(0);
     }
-  };
+  }, [currentStoryIndex, stories.length]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNextStory();
-    }, 4000);
+    const interval = setInterval(handleNextStory, 4000);
+
     return () => clearInterval(interval);
-  }, [curentStoryIndex]);
+  }, [handleNextStory]);
 
   return (
     <div className="relative w-full">
       <StoryViewBlock>
-        <StoryMedia src={stories?.[curentStoryIndex].image} />
+        <StoryMedia src={stories?.[currentStoryIndex].image} />
         <div className="absolute top-0 flex w-full">
           {stories.map((item, index) => (
             <StoryEvolve

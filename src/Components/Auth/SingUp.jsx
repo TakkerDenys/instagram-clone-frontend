@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -9,6 +9,7 @@ import {
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   userPhoneNumber: Yup.string()
@@ -22,6 +23,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const UserSignUp = () => {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const initialValues = {
     userUsername: "",
     userName: "",
@@ -31,8 +34,33 @@ const UserSignUp = () => {
   const navigation = useNavigate();
 
   const navigateToLogin = () => navigation("/login");
-  const handleSubmit = (formValues) => {
-    console.log("formValues: ", formValues);
+
+  const handleSubmit = async (formValues, formikProps) => {
+    try {
+      const response = await axios.post(
+        "http://94.153.144.18:8080/api/users/register",
+        {
+          phone: formValues.userPhoneNumber,
+          login: formValues.userUsername,
+          name: formValues.userName,
+          password: formValues.userPassword,
+        }
+      );
+
+      console.log("Успішна відповідь:", response.data);
+
+      if (response.data.success) {
+        setSuccessMessage("Успішна реєстрація");
+      } else {
+        setErrorMessage("Користувач вже існує");
+      }
+    } catch (error) {
+      console.error("Помилка запиту:", error.message);
+
+      setErrorMessage("Помилка запиту");
+    } finally {
+      formikProps.setSubmitting(false);
+    }
   };
 
   return (
@@ -44,7 +72,7 @@ const UserSignUp = () => {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <img className="mb-5" src="./img/Instagran_logo.png" alt="Instagran Logo" />
+          <img className="mb-5" src="./img/Instagran_logo.png" alt="" />
 
           <Formik
             initialValues={initialValues}
@@ -81,7 +109,9 @@ const UserSignUp = () => {
                 <Field name="userUsername">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.userUsername && form.touched.userUsername}
+                      isInvalid={
+                        form.errors.userUsername && form.touched.userUsername
+                      }
                     >
                       <Input
                         className="w-full"
@@ -107,7 +137,9 @@ const UserSignUp = () => {
                         id="userName"
                         placeholder="Повне імʼя"
                       />
-                      <FormErrorMessage>{form.errors.userName}</FormErrorMessage>
+                      <FormErrorMessage>
+                        {form.errors.userName}
+                      </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
@@ -115,7 +147,9 @@ const UserSignUp = () => {
                 <Field name="userPassword">
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.userPassword && form.touched.userPassword}
+                      isInvalid={
+                        form.errors.userPassword && form.touched.userPassword
+                      }
                     >
                       <Input
                         className="w-full"
@@ -151,6 +185,16 @@ const UserSignUp = () => {
           </Formik>
         </Box>
       </div>
+      {successMessage && (
+        <div className="success-message text-center py-2 text-sm text-green-800">
+          <p>{successMessage}</p>
+        </div>
+      )}
+      {errorMessage && (
+        <div className="error-message text-center py-2 text-sm text-red-600">
+          <p>{errorMessage}</p>
+        </div>
+      )}
       <div className="user-border w-full border-slate-300 mt-5">
         <p className="text-center py-2 text-sm">
           У вас є обліковий запис?

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -9,6 +9,7 @@ import {
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   userPhoneNumber: Yup.string()
@@ -20,14 +21,38 @@ const validationSchema = Yup.object().shape({
 });
 
 export const UserSignIn = () => {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const initialValues = {
     userPhoneNumber: "",
     userPassword: "",
   };
   const navigation = useNavigate();
 
-  const handleSubmit = (formValues) => {
-    console.log("formValues: ", formValues);
+  const handleSubmit = async (formValues, formikProps) => {
+    try {
+      const response = await axios.post(
+        "http://94.153.144.18:8080/api/users/register",
+        {
+          phone: formValues.userPhoneNumber,
+          password: formValues.userPassword,
+        }
+      );
+
+      console.log("Успішна відповідь:", response.data);
+
+      if (response.data.success) {
+        setSuccessMessage("Успішна реєстрація");
+      } else {
+        setErrorMessage("Користувач вже існує");
+      }
+    } catch (error) {
+      console.error("Помилка запиту:", error.message);
+
+      setErrorMessage("Помилка запиту");
+    } finally {
+      formikProps.setSubmitting(false);
+    }
   };
 
   const navigateToSignUp = () => navigation("/singup");
@@ -41,7 +66,7 @@ export const UserSignIn = () => {
           flexDirection={"column"}
           alignItems={"center"}
         >
-          <img className="mb-5" src="./img/Instagran_logo.png" alt="" />
+          <img className="mb-5" src="./img/Instagran_logo.png" alt="Instagran Logo" />
 
           <Formik
             initialValues={initialValues}
@@ -104,6 +129,16 @@ export const UserSignIn = () => {
           </Formik>
         </Box>
       </div>
+      {successMessage && (
+        <div className="success-message text-center py-2 text-sm text-green-800">
+          <p>{successMessage}</p>
+        </div>
+      )}
+      {errorMessage && (
+        <div className="error-message text-center py-2 text-sm text-red-600">
+          <p>{errorMessage}</p>
+        </div>
+      )}
       <div className="user-border w-full border-slate-300 mt-5">
         <p className="text-center py-2 text-sm">
           Не маєте облікового запису?
@@ -111,7 +146,7 @@ export const UserSignIn = () => {
             onClick={navigateToSignUp}
             className="ml-2 text-blue-500 cursor-pointer"
           >
-            Зареєструйтеся
+            Зарєєструйтеся
           </span>
         </p>
       </div>
