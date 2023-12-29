@@ -9,7 +9,6 @@ import {
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   userPhoneNumber: Yup.string()
@@ -34,33 +33,8 @@ const UserSignUp = () => {
   const navigation = useNavigate();
 
   const navigateToLogin = () => navigation("/login");
-
-  const handleSubmit = async (formValues, formikProps) => {
-    try {
-      const response = await axios.post(
-        "http://94.153.144.18:8080/api/users/register",
-        {
-          phone: formValues.userPhoneNumber,
-          login: formValues.userUsername,
-          name: formValues.userName,
-          password: formValues.userPassword,
-        }
-      );
-
-      console.log("Успішна відповідь:", response.data);
-
-      if (response.data.success) {
-        setSuccessMessage("Успішна реєстрація");
-      } else {
-        setErrorMessage("Користувач вже існує");
-      }
-    } catch (error) {
-      console.error("Помилка запиту:", error.message);
-
-      setErrorMessage("Помилка запиту");
-    } finally {
-      formikProps.setSubmitting(false);
-    }
+  const handleSubmit = (formValues) => {
+    console.log("formValues: ", formValues);
   };
 
   return (
