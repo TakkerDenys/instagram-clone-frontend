@@ -1,5 +1,5 @@
 import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BsThreeDots,
   BsBookmark,
@@ -11,166 +11,104 @@ import { FaRegComment } from "react-icons/fa";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { Comment } from "./Comment";
 import "./Comment.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { timeDifference } from "../../Config/Logic";
-import { createComment } from "../../Redux/Comment/Action";
-import { findPostByIdAction } from "../../Redux/Post/Action";
 
 const CommentPopap = ({
-  isOpen,
   onClose,
-  onOpen,
-  postData,
-  handleLikePost,
-  handleUnLikePost,
-  handleSavePost,
-  handleUnSavePost,
-  isPostLiked,
-  isSaved,
+  isOpen,
+  likedPost,
+  savedPost,
+  itemSavedPost,
+  itemLikedPost,
 }) => {
-  const dispatch = useDispatch();
-  const jwt = localStorage.getItem("token");
-  const { post, comments } = useSelector((store) => store);
-  const [commentContent, setCommentContent] = useState("");
-  const { postId } = useParams();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(
-      findPostByIdAction({
-        jwt,
-        postId,
-      })
-    );
-  }, [postId, comments?.createdComment]);
-
-  const handleAddComment = () => {
-    const data = {
-      jwt,
-      postId,
-      data: {
-        content: commentContent,
-      },
-    };
-    console.log("comment content ", commentContent);
-    dispatch(createComment(data));
-    setCommentContent("");
-  };
-
-  const handleCommnetInputChange = (e) => {
-    setCommentContent(e.target.value);
-  };
-  const handleOnEnterPress = (e) => {
-    if (e.key === "Enter") {
-      handleAddComment();
-    } else return;
-  };
-
-  const handleClose = () => {
-    onClose();
-    navigate("/");
-  };
   return (
     <div>
-    <Modal size={"4xl"} onClose={handleClose} isOpen={isOpen} isCentered>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalBody>
-          <div className="flex h-[75vh] ">
-            <div className="w-[45%] flex flex-col justify-center">
-              <img
-                className="max-h-full max-w-full"
-                src={post.singlePost?.image}
-                alt=""
-              />
-            </div>
-            <div className="w-[55%] pl-10 relative">
-              <div className="reqUser flex justify-between items-center py-5">
-                <div className="flex items-center">
-                  <div className="">
-                    <img
-                      className="w-9 h-9 rounded-full"
-                      src={
-                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                      }
-                      alt=""
+      <Modal size={"4xl"} onClose={onClose} isOpen={isOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody>
+            <div className="flex h-[75vh]">
+              <div className="w-[45%] flex flex-col justify-center">
+                <img
+                  className="max-h-full w-full"
+                  src="https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+                  alt=""
+                />
+              </div>
+              <div className="w-[55%] pl-10 relative">
+                <div className="flex justify-between items-center py-5">
+                  <div className="flex items-center">
+                    <div>
+                      <img
+                        className="w-9 h-9 rounded-full"
+                        src="https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBwZW9wbGV8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div className="ml-2">
+                      <p>username</p>
+                    </div>
+                  </div>
+                  <BsThreeDots />
+                </div>
+                <hr />
+                <div className="comment">
+                  {[1, 1, 1, 1, 1, 1].map(() => (
+                    <Comment />
+                  ))}
+                </div>
+                <hr />
+                <div className="absolute bottom-0 w-[90%]">
+                  <div className="flex justify-between items-center w-full py-2">
+                    <div className="flex items-center space-x-2">
+                      {likedPost ? (
+                        <AiFillHeart
+                          className="text-2xl hover:opacity-50 cursor-pointer text-red-600"
+                          onClick={itemLikedPost}
+                        />
+                      ) : (
+                        <AiOutlineHeart
+                          className="text-2xl cursor-pointer"
+                          onClick={itemLikedPost}
+                        />
+                      )}
+                      <FaRegComment className="text-xl hover:opacity-50 cursor-pointer" />
+                      <RiSendPlaneLine className="text-xl hover:opacity-50 cursor-pointer" />
+                    </div>
+                    <div className="cursor-pointer">
+                      {savedPost ? (
+                        <BsBookmarkFill
+                          className="text-xl hover:opacity-50 cursor-pointer"
+                          onClick={itemSavedPost}
+                        />
+                      ) : (
+                        <BsBookmark
+                          className="text-xl hover:opacity-50 cursor-pointer"
+                          onClick={itemSavedPost}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <div className="w-full py-2">
+                    <p>Позначки «Подобається»: 4</p>
+                    <p className="opacity-50 tetx-sm">2 дн. ТОМУ</p>
+                  </div>
+                  <hr />
+                  <div className="flex items-center w-full">
+                    <BsEmojiSmile />
+                    <input
+                      className="add_comment"
+                      type="text"
+                      placeholder="Додайте коментар..."
                     />
                   </div>
-                  <div className="ml-3">
-                    <p>{post?.singlePost?.user?.name}</p>
-                    <p>{post?.singlePost?.user?.username}</p>
-                  </div>
-                </div>
-                <BsThreeDots />
-              </div>
-              <hr />
-
-              <div className="comments ">
-                {post?.singlePost?.comments?.length > 0 &&
-                  post?.singlePost?.comments.map((item) => <Comment comment={item} />)}
-              </div>
-
-              <div className=" absolute bottom-0 w-[90%]">
-                <div className="flex justify-between items-center w-full mt-5">
-                  <div className="flex items-center space-x-2 ">
-                    {isPostLiked ? (
-                      <AiFillHeart
-                        onClick={handleUnLikePost}
-                        className="text-2xl hover:opacity-50 cursor-pointer text-red-600"
-                      />
-                    ) : (
-                      <AiOutlineHeart
-                        onClick={handleLikePost}
-                        className="text-2xl hover:opacity-50 cursor-pointer "
-                      />
-                    )}
-
-                    <FaRegComment className="text-xl hover:opacity-50 cursor-pointer" />
-                    <RiSendPlaneLine className="text-xl hover:opacity-50 cursor-pointer" />
-                  </div>
-                  <div className="cursor-pointer">
-                    {isSaved ? (
-                      <BsBookmarkFill
-                        onClick={() => handleUnSavePost(post.singlePost?.id)}
-                        className="text-xl"
-                      />
-                    ) : (
-                      <BsBookmark
-                        onClick={() => handleSavePost(post.singlePost?.id)}
-                        className="text-xl hover:opacity-50 cursor-pointer"
-                      />
-                    )}
-                  </div>
-                </div>
-                {post.singlePost?.likedByUsers?.length > 0 && (
-                  <p className="text-sm font-semibold py-2">
-                    {post.singlePost?.likedByUsers?.length} likes{" "}
-                  </p>
-                )}
-                <p className="opacity-70 pb-5">
-                  {timeDifference(post?.singlePost?.createdAt)}
-                </p>
-                <div className=" flex items-center ">
-                  <BsEmojiSmile className="mr-3 text-xl" />
-                  <input
-                    className="commentInput w-[70%]"
-                    placeholder="Add Comment..."
-                    type="text"
-                    onKeyPress={handleOnEnterPress}
-                    onChange={handleCommnetInputChange}
-                    value={commentContent}
-                  />
                 </div>
               </div>
             </div>
-          </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-  </div>
-);
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </div>
+  );
 };
-
 
 export default CommentPopap;
