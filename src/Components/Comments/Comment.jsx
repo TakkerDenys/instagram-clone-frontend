@@ -29,9 +29,15 @@ export const Comment = () => {
           </div>
         </div>
         {likedComment ? (
-          <AiFillHeart onClick={itemLikedComment} className="text-xs hover:opacity-50 cursor-pointer text-red-600" />
+          <AiFillHeart
+            onClick={itemLikedComment}
+            className="text-xs hover:opacity-50 cursor-pointer text-red-600"
+          />
         ) : (
-          <AiOutlineHeart onClick={itemLikedComment} className="text-xs hover:opacity-50 cursor-pointer" />
+          <AiOutlineHeart
+            onClick={itemLikedComment}
+            className="text-xs hover:opacity-50 cursor-pointer"
+          />
         )}
       </div>
     </div>
