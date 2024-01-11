@@ -23,7 +23,7 @@ function PostModal({ onClose, onSubmit }) {
     <div className="">
      
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postModal">
-  Create new post
+Створити нову публікацію
 </button>
 
 
@@ -31,7 +31,7 @@ function PostModal({ onClose, onSubmit }) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="postModalLabel">Create new post</h5>
+        <h5 class="modal-title" id="postModalLabel">Створити нову публікацію</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -39,18 +39,18 @@ function PostModal({ onClose, onSubmit }) {
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="caption">Caption:</label>
+            <label for="caption">Підпис:</label>
             <textarea class="form-control" id="caption" name="caption" rows="3"></textarea>
           </div>
           <div class="form-group">
-            <label for="image">Choose an image:</label>
+            <label for="image">Виберіть зображення:</label>
             <input type="file" class="form-control-file" id="image" name="image"/>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Post</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+        <button type="button" class="btn btn-primary">Пост</button>
       </div>
     </div>
   </div>

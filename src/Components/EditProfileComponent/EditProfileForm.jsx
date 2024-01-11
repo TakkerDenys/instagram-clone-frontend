@@ -67,7 +67,7 @@ const EditProfileForm = () => {
       };
       dispatch(editUserDetailsAction(data));
       toast({
-        title: "Account updated...",
+        title: "Зміни збережено...",
 
         status: "success",
         duration: 5000,
@@ -86,12 +86,8 @@ const EditProfileForm = () => {
     };
     dispatch(editUserDetailsAction(data))
 
-    // dispatch(getUserProfileAction(token))
-
     onClose();
   }
-
-  // console.log("initial value ---- ", initialValues);
 
   return (
     <div className="border rounded-md p-10">
@@ -114,66 +110,66 @@ const EditProfileForm = () => {
             onClick={onOpen}
             className="font-bold text-blue-800 cursor-pointer"
           >
-            Change Profile Photo
+            Змінити основну світлину
           </p>
         </div>
       </div>
       <form onSubmit={formik.handleSubmit}>
         <Stack spacing="6">
           <FormControl className="flex " id="name">
-            <FormLabel className="w-[15%]">Name</FormLabel>
+            <FormLabel className="w-[15%]">Імʼя</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Name"
+                placeholder="Імʼя"
                 className="w-full"
                 type="text"
                 {...formik.getFieldProps("name")}
               />
               <FormHelperText className="text-xs">
-                Help people discover your account by using the name you're known
-                by: either your full name, nickname, or business name.
+              Допоможіть людям знайти ваш акаунт, використовуючи ім'я, під яким ви відомі
+                за повним ім'ям, псевдонімом або назвою компанії.
               </FormHelperText>
               <FormHelperText className="text-xs">
-                You can only change your name twice within 14 days.
+              Ви можете змінити ім'я лише двічі протягом 14 днів.
               </FormHelperText>
             </div>
           </FormControl>
           <FormControl className="flex " id="username">
-            <FormLabel className="w-[15%]">Username</FormLabel>
+            <FormLabel className="w-[15%]">Ім'я користувача</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Username"
+                placeholder="Ім'я користувача"
                 className="w-full"
                 type="text"
                 {...formik.getFieldProps("username")}
               />
               <FormHelperText className="text-xs">
-                In most cases, you'll be able to change your username back to
-                ashok.zarmariya for another 14 days. Learn more
+              У більшості випадків ви зможете змінити своє ім'я користувача на
+                ashok.zarmariya ще протягом 14 днів. Дізнатися більше
               </FormHelperText>
             </div>
           </FormControl>
           <FormControl className="flex " id="website">
-            <FormLabel className="w-[15%]">Website</FormLabel>
+            <FormLabel className="w-[15%]">Веб-сайт</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Website"
+                placeholder="Веб-сайт"
                 className="w-full"
                 type="text"
                 {...formik.getFieldProps("website")}
               />
               <FormHelperText className="text-xs">
-                Editing your links is only available on mobile. Visit the
-                Instagram app and edit your profile to change the websites in
-                your bio.
+              Редагування посилань доступне лише на мобільних пристроях. Відвідайте
+                Instagram та відредагуйте свій профіль, щоб змінити веб-сайти у
+                вашій біографії.
               </FormHelperText>
             </div>
           </FormControl>
           <FormControl className="flex " id="bio">
-            <FormLabel className="w-[15%]">Bio</FormLabel>
+            <FormLabel className="w-[15%]">Біографія</FormLabel>
             <div className="w-full">
               <Textarea
-                placeholder="Bio"
+                placeholder="Біографія"
                 className="w-full"
                 type="text"
                 {...formik.getFieldProps("bio")}
@@ -182,19 +178,19 @@ const EditProfileForm = () => {
           </FormControl>
 
           <div className="py-10">
-            <p className="font-bold text-sm">Personal information</p>
+            <p className="font-bold text-sm">Особиста інформація</p>
             <p className="text-xs">
-              Provide your personal information, even if the account is used for
-              a business, a pet or something else. This won't be a part of your
-              public profile.
+            Надайте свою особисту інформацію, навіть якщо акаунт використовується для
+              для бізнесу, домашнього улюбленця або чогось іншого. Це не буде частиною вашого
+              публічного профілю.
             </p>
           </div>
 
           <FormControl className="flex " id="email">
-            <FormLabel className="w-[15%]">Email address</FormLabel>
+            <FormLabel className="w-[15%]">Адреса електронної пошти</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Email"
+                placeholder="Електронна пошта"
                 className="w-full"
                 type="email"
                 {...formik.getFieldProps("email")}
@@ -203,10 +199,10 @@ const EditProfileForm = () => {
           </FormControl>
 
           <FormControl className="flex " id="mobile">
-            <FormLabel className="w-[15%]">Phone number</FormLabel>
+            <FormLabel className="w-[15%]">Номер телефону</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Phone"
+                placeholder="Номер телефону"
                 className="w-full"
                 type="tel"
                 {...formik.getFieldProps("mobile")}
@@ -214,10 +210,10 @@ const EditProfileForm = () => {
             </div>
           </FormControl>
           <FormControl className="flex " id="gender">
-            <FormLabel className="w-[15%]">Gender</FormLabel>
+            <FormLabel className="w-[15%]">Стать</FormLabel>
             <div className="w-full">
               <Input
-                placeholder="Gender"
+                placeholder="Стать"
                 className="w-full"
                 type="text"
                 {...formik.getFieldProps("gender")}
@@ -232,7 +228,7 @@ const EditProfileForm = () => {
 
           <div>
             <Button colorScheme="blue" type="submit" className="">
-              submit
+            Зберегти
             </Button>
           </div>
         </Stack>

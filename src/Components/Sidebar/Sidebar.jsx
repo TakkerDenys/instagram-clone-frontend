@@ -12,7 +12,7 @@ import CreatePostModal from "../Post/Create/CreatePostModal";
 const Sidebar = () => {
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState("Home");
+  const [activeTab, setActiveTab] = useState("Головна");
   const excludedBoxRef = useRef(null);
   const [isSearchBoxVisible, setIsSearchBoxVisible] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -21,15 +21,15 @@ const Sidebar = () => {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    if (tab === "Profile") {
+    if (tab === "Профіль") {
       navigate(`/${user.reqUser?.username}`);
-    } else if (tab === "Home") {
+    } else if (tab === "Головна") {
       navigate("/");
-    } else if (tab === "Create") {
+    } else if (tab === "Створити") {
       onOpen();
     }
 
-    if (tab === "Search") {
+    if (tab === "Пошук") {
       setIsSearchBoxVisible(true);
     } else setIsSearchBoxVisible(false);
   };
@@ -81,19 +81,19 @@ const Sidebar = () => {
         <div clasName="relative">
           <div onClick={handleClick} className="flex items-center cursor-pointer ">
             <IoReorderThreeOutline className="text-2xl" />
-            {!isSearchBoxVisible && <p className="ml-5">More</p>}
+            {!isSearchBoxVisible && <p className="ml-5">Більше</p>}
           </div>
           <div className="absolute bottom-20 left-14  w-[70%]">
             {showDropdown && (
               <div className="shadow-md">
                 <p className=" w-full py-2 text-base px-4 border-t border-b  cursor-pointer">
-                  Switch Appearance
+                  Змінити зовнішній вигляд
                 </p>
                 <p className=" w-full py-2 text-base px-4 border-t border-b cursor-pointer">
-                  Saved
+                  Збережене
                 </p>
                 <p onClick={handleLogout} className=" w-full py-2 text-base px-4 border-t border-b cursor-pointer">
-                  Log out
+                  Вийти
                 </p>
               
               

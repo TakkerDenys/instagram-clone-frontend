@@ -16,17 +16,17 @@ import {
 
 export const mainu = [
     {
-      title: "Home",
+      title: "Головна",
       icon: <AiOutlineHome className="text-2xl mr-5" />,
       activeIcon: <AiFillHome className="text-2xl mr-5" />,
     },
     {
-      title: "Search",
+      title: "Пошук",
       icon: <AiOutlineSearch className="text-2xl mr-5" />,
       activeIcon: <AiOutlineSearch className="text-2xl mr-5" />,
     },
     {
-      title: "Explore",
+      title: "Цікаве",
       icon: <AiOutlineCompass className="text-2xl mr-5" />,
       activeIcon: <AiFillCompass className="text-2xl mr-5" />,
     },
@@ -36,19 +36,19 @@ export const mainu = [
       activeIcon: <RiVideoFill className="text-2xl mr-5" />,
     },
     {
-      title: "Message",
+      title: "Повідомлення",
       icon: <AiOutlineMessage className="text-2xl mr-5" />,
       activeIcon: <AiFillMessage className="text-2xl mr-5" />,
     },
     {
-      title: "Notifications",
+      title: "Сповіщення",
       icon: <AiOutlineHeart className="text-2xl mr-5" />,
       activeIcon: <AiFillHeart className="text-2xl mr-5" />,
     },
     {
-      title: "Create",
+      title: "Створити",
       icon: <AiOutlinePlusCircle className="text-2xl mr-5" />,
       activeIcon: <AiFillPlusCircle className="text-2xl mr-5" />,
     },
-    { title: "Profile", icon: <CgProfile className="text-2xl mr-5" />, activeIcon: <CgProfile className="text-2xl mr-5" /> },
+    { title: "Профіль", icon: <CgProfile className="text-2xl mr-5" />, activeIcon: <CgProfile className="text-2xl mr-5" /> },
   ];

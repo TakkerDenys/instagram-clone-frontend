@@ -36,8 +36,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
-// https://res.cloudinary.com/dnbw04gbs/image/upload/v1679490221/screenshot4_hb7xtr.png
-//
-// 
-// 

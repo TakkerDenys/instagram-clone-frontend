@@ -15,10 +15,10 @@ import { signinAction } from "../../Redux/Auth/Action";
 import { getUserProfileAction } from "../../Redux/User/Action";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email address").required("Required"),
+  email: Yup.string().email("Неправильна адреса електронної пошти").required("Обовʼязково"),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Required"),
+    .min(8, "Пароль повинен містити не менше 8 символів")
+    .required("Обовʼязково"),
 });
 
 const Signin = () => {
@@ -80,7 +80,7 @@ const Signin = () => {
                       className="w-full"
                       {...field}
                       id="email"
-                      placeholder="Mobile Number Or Email"
+                      placeholder="Номер мобільного телефону або електронна пошта"
                     />
                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                   </FormControl>
@@ -97,19 +97,19 @@ const Signin = () => {
                       {...field}
                       type="password"
                       id="password"
-                      placeholder="Password"
+                      placeholder="Пароль"
                     />
                     <FormErrorMessage>{form.errors.password}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
               <p className="text-center">
-                People who use our service may have uploaded your contact
-                information to Instagram. Learn More
+              Люди, які користуються нашим сервісом, могли завантажити вашу контактну
+                інформацію в Instagram. Дізнатися більше
               </p>
               <p className="mt-5 text-center">
-                By signing up, you agree to our Terms , Privacy Policy and
-                Cookies Policy .
+              Реєструючись, ви погоджуєтеся з нашими Умовами, Політикою конфіденційності та
+                Політика щодо файлів cookie.
               </p>
               <Button
                 className="w-full"
@@ -118,7 +118,7 @@ const Signin = () => {
                 type="submit"
                 isLoading={formikProps.isSubmitting}
               >
-                Sign In
+                Увійти
               </Button>
             </Form>
           )}
@@ -128,7 +128,7 @@ const Signin = () => {
       </div>
       
       <div className="w-full border border-slate-300 mt-5">
-<p className="text-center py-2">If You Don't Have Already Account <span onClick={()=>navigate("/signup")} className="ml-2 text-blue-700 cursor-pointer">Sign Up</span></p>
+<p className="text-center py-2">Якщо у вас ще немає облікового запису <span onClick={()=>navigate("/signup")} className="ml-2 text-blue-700 cursor-pointer">Зареєструватися</span></p>
       </div>
     </div>
   );

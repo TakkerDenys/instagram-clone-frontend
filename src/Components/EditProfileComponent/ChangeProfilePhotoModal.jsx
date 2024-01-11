@@ -12,15 +12,12 @@ import {
 
 function ChangeProfilePhotoModal({ isOpen, onOpen, onClose,handleProfileImageChange }) {
 
-    
-
-
   return (
     <>
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader textAlign={"center"}>Modal Title</ModalHeader>
+          <ModalHeader textAlign={"center"}> фівф</ModalHeader>
 
           <ModalBody>
             <div className="flex flex-col items-center">
@@ -28,7 +25,7 @@ function ChangeProfilePhotoModal({ isOpen, onOpen, onClose,handleProfileImageCha
                 for="profileImage"
                 className="font-bold py-3 text-blue-600 text-center cursor-pointer text-xs w-full"
               >
-                Upload Photo
+                Завантажити фото
               </label>
 
               <input onChange={handleProfileImageChange} type="file" id="profileImage" name="profileImage" />
@@ -37,11 +34,11 @@ function ChangeProfilePhotoModal({ isOpen, onOpen, onClose,handleProfileImageCha
             <hr />
 
             <p className="font-bold py-3 text-red-600 text-center">
-              Remove Photo
+            Видалити фото
             </p>
             <hr />
             <p className=" py-3 text-center" onClick={onClose}>
-              Cancel
+            Скасувати
             </p>
           </ModalBody>
           {/* <ModalFooter>

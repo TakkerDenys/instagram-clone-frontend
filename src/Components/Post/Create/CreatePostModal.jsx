@@ -74,7 +74,7 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
       setPostData((prevValues)=>({...prevValues, image:url}));
     } else {
       setFile(null);
-      alert("Please select an image/video file.");
+      alert("Будь ласка, виберіть зображення/відеофайл.");
     }
   };
 
@@ -107,7 +107,7 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
         <ModalOverlay />
         <ModalContent fontSize={"sm"}>
           <div className="flex justify-between py-1 px-10 items-center">
-            <p>Create New Post</p>
+            <p>Створити нову публікацію</p>
             <Button
               onClick={handleSubmit}
               className="inline-flex"
@@ -115,7 +115,7 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
               size={"sm"}
               variant="ghost"
             >
-              Share
+              Поділитись
             </Button>
           </div>
 
@@ -138,11 +138,11 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
                           isDragOver ? "text-blue-800" : ""
                         }`}
                       />
-                      <p>Drag photos or videos here </p>
+                      <p>Перетягніть фотографії або відео сюди </p>
                     </div>
 
                     <label for="file-upload" className="custom-file-upload">
-                      Select from computer
+                    Виберіть з комп'ютера
                     </label>
                     <input
                       type="file"
@@ -175,7 +175,7 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
                 <div className="px-2">
                   <textarea
                     className="captionInput"
-                    placeholder="Write a caption..."
+                    placeholder="Напишіть підпис..."
                     name="caption"
                     rows="8"
 
@@ -191,7 +191,7 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
                   <input
                     className="locationInput"
                     type="text"
-                    placeholder="Add Location"
+                    placeholder="Додати місцезнаходження"
                     name="location"
                     onChange={handleInputChange}
                   />

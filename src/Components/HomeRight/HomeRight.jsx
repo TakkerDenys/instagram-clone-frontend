@@ -21,11 +21,11 @@ const HomeRight = ({suggestedUser}) => {
               <p className="opacity-70">{user.reqUser?.username}</p>
             </div>
           </div>
-          <p className="text-blue-600 font-semibold">switch</p>
+          <p className="text-blue-600 font-semibold">Перейти</p>
         </div>
         <div className="flex justify-between py-5 items-center">
-          <p className="font-semibold opacity-70">Suggestions for you</p>
-          <p className="text-xs font-semibold opacity-95">View All</p>
+          <p className="font-semibold opacity-70">Рекомендовані для вас</p>
+          <p className="text-xs font-semibold opacity-95">Переглянути всіх</p>
         </div>
 
         <div className="space-y-5">
@@ -36,36 +36,30 @@ const HomeRight = ({suggestedUser}) => {
                 item.userImage || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               }
               username={item.username}
-              description={"Follows you"}
+              description={"Стежить за вами"}
             />
           ))}
         </div>
         <div className="opacity-60 text-xs flex items-center flex-wrap mt-10">
-            <span>About</span>
+            <span>Інформація</span>
             <BsDot/>
-            <span>Help</span>
+            <span>Довідка</span>
             <BsDot/>
-            <span>Press</span>
+            <span>Преса</span>
             <BsDot/>
             <span>API</span>
             <BsDot/>
-            <span>Jobs</span>
+            <span>Вакансії</span>
             <BsDot/>
-            <span>Privacy</span>
+            <span>Конфіденційність</span>
             <BsDot/>
-            <span>Terms</span>
+            <span>Умови</span>
             <BsDot/>
-            <span>Locations</span>
+            <span>Розташування</span>
             <BsDot/>
-            <span>Language</span>
+            <span>Мова</span>
             <BsDot/>
-            <span>English</span>
-            <BsDot/>
-            <span>Meta</span>
-            <BsDot/>
-            <span>Verified</span>
-                
-         
+            <span>Meta Verified</span>
         </div>
       </div>
     </div>

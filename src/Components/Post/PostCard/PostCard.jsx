@@ -170,7 +170,7 @@ const PostCard = ({
                       onClick={() => handleDeletePost(post.id)}
                       className="bg-black text-white py-1 px-4 rounded-md cursor-pointer"
                     >
-                      Delete
+                      Видалити
                     </p>
                   )}
                 </div>
@@ -217,7 +217,7 @@ const PostCard = ({
         </div>
         <div className="w-full py-2 px-5">
           {numberOfLikes > 0 && (
-            <p className="text-sm">{numberOfLikes} likes </p>
+            <p className="text-sm">{numberOfLikes} вподобання </p>
           )}
           {/* <div className="flex mt-3">
           <div className="mr-3">
@@ -245,7 +245,7 @@ const PostCard = ({
               onClick={handleOpenCommentModal}
               className="opacity-50 text-sm py-2 -z-0 cursor-pointer"
             >
-              View all {post?.comments?.length} comments
+              Переглянути всі {post?.comments?.length} коментарі
             </p>
           )}
          
@@ -259,7 +259,7 @@ const PostCard = ({
             onChange={handleCommnetInputChange}
             className="commentInput"
             type="text"
-            placeholder="Add a comment..."
+            placeholder="Додати коментар..."
           />
           </div>
          

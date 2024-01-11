@@ -59,15 +59,15 @@ setIsFollow(isFollowing)
             <p className="text-base">{user?.username}</p>
             <button className="text-xs py-1 px-5 bg-slate-100 hover:bg-slate-300 rounded-md font-semibold">
               {isRequser ? (
-                <span onClick={goToAccountEdit}>Edit profile</span>
+                <span onClick={goToAccountEdit}>Редагувати профіль</span>
               ) : isFollow ? (
-                <span onClick={handleUnFollowUser}>Unfollow </span>
+                <span onClick={handleUnFollowUser}>Не стежити </span>
               ) : (
-                <span onClick={handleFollowUser}>Follow</span>
+                <span onClick={handleFollowUser}>Стежити</span>
               )}
             </button>
             <button className="text-xs py-1 px-5 bg-slate-100 hover:bg-slate-300 rounded-md font-semibold">
-              {isRequser ? "Add tools" : "Message"}
+              {isRequser ? "Add tools" : "Повідомлення"}
             </button>
             <TbCircleDashed className="text-xl" />
           </div>
@@ -77,20 +77,20 @@ setIsFollow(isFollowing)
               <span className="font-semibold mr-2">
                 {post?.reqUserPost?.length || 0}
               </span>
-              <span>posts</span>
+              <span>пости</span>
             </div>
 
             <div>
               <span className="font-semibold mr-2">
                 {user?.follower?.length}
               </span>
-              <span>followers</span>
+              <span>читачі</span>
             </div>
             <div>
               <span className="font-semibold mr-2">
                 {user?.following?.length}
               </span>
-              <span>following</span>
+              <span>стежить</span>
             </div>
           </div>
           <div>

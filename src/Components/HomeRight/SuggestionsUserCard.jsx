@@ -10,7 +10,7 @@ const SuggestionsUserCard = ({image,username,description}) => {
                 <p className='text-sm font-semibold opacity-70'>{description}</p>
             </div>
         </div>
-        <p className='text-blue-700 text-sm font-semibold'>Follow</p>
+        <p className='text-blue-700 text-sm font-semibold'>Стежити</p>
     </div>
   )
 }

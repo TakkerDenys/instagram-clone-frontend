@@ -1,5 +1,5 @@
 // export const signinAction = (data) => async (dispatch) => {
-//   const res = await fetch("http://localhost:5454/signin", {
+//   const res = await fetch("http://localhost:8080/signin", {
 //     method: "GET",
 //     headers: {
 //       "Content-Type": "application/json",
@@ -10,13 +10,9 @@
 
 import { SIGN_IN, SIGN_UP } from "./ActionType";
 
-//   console.log("token from header :- ", token);
-//   const data = await res.json();
-// };
-
 export const signinAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5454/signin`, {
+    const res = await fetch(`http://localhost:8080/signin`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +31,7 @@ export const signinAction = (data) => async (dispatch) => {
 
 export const signupAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5454/signup`, {
+    const res = await fetch(`http://localhost:8080/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

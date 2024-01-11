@@ -4,18 +4,13 @@ p{
 .commentBox {
     box-sizing: border-box;
     font-size: small;
-    
-    
-    /* other styles */
   }
 
   .commentInput{
 
     border: none;
     outline: none;
-    /* border-top: 1px solid rgb(191, 191, 191); */
     width: 100%;
-    /* padding-bottom: .7rem; */
     padding: .5rem .7rem;
 
   }

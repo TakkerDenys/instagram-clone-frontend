@@ -18,18 +18,16 @@ const SearchComponent = ({setIsSearchVisible}) => {
   };
   const debouncedHandleSearchUser = debounce(handleSearchUser, 1000);
 
-// Call debouncedHandleSearchUser with a query string
-
   return (
     <div className="search-container">
       <div className="px-3 pb-5">
-        <h1 className="text-xl pb-5">Search</h1>
+        <h1 className="text-xl pb-5">Пошук</h1>
 
         <input
           onChange={(e) =>debouncedHandleSearchUser(e.target.value)}
           className="search-input"
           type="text"
-          placeholder="Search..."
+          placeholder="Пошук..."
         />
       </div>
 

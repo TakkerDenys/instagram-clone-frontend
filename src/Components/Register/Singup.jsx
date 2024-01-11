@@ -14,16 +14,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email address").required("Required"),
+  email: Yup.string().email("Неправильна адреса електронної пошти").required("Обовʼязково"),
   username: Yup.string()
-    .min(4, "Username must be at least 4 characters")
-    .required("Required"),
+    .min(4, "Ім'я користувача повинно містити щонайменше 4 символи")
+    .required("Обовʼязково"),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Required"),
+    .min(8, "Пароль повинен містити не менше 8 символів")
+    .required("Обовʼязково"),
   name: Yup.string()
-    .min(2, "Name must be at least 2 characters")
-    .required("Required"),
+    .min(2, "Ім'я повинно містити щонайменше 2 символи")
+    .required("Обовʼязково"),
 });
 
 const Signup = () => {
@@ -46,7 +46,7 @@ if(auth.signup?.username){
   setIsSignup(true);
   navigate("/login")
   toast({
-    title: 'Account created successfully',
+    title: 'Обліковий запис успішно створено',
     status: 'success',
     duration: 8000,
     isClosable: true,
@@ -64,7 +64,7 @@ if(auth.signup?.username){
           alt=""
         />
         <p className="font-bold opacity-50 text-lg mb-10 text-center">
-          Sign up to see photos and videos from your friends.
+        Зареєструйтеся, щоб бачити фото та відео від ваших друзів.
         </p>
         <Formik
           initialValues={initialValues}
@@ -83,7 +83,7 @@ if(auth.signup?.username){
                       className="w-full"
                       {...field}
                       id="email"
-                      placeholder="Mobile Number Or Email"
+                      placeholder="Номер мобільного телефону або електронна пошта"
                     />
                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                   </FormControl>
@@ -106,7 +106,7 @@ if(auth.signup?.username){
                     isInvalid={form.errors.name && form.touched.name}
                     mb={4}
                   >
-                    <Input {...field} id="name" placeholder="Full Name" />
+                    <Input {...field} id="name" placeholder="Повне імʼя" />
                     <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                   </FormControl>
                 )}
@@ -121,19 +121,19 @@ if(auth.signup?.username){
                       {...field}
                       type="password"
                       id="password"
-                      placeholder="Password"
+                      placeholder="Пароль"
                     />
                     <FormErrorMessage>{form.errors.password}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
               <p className="text-center">
-                People who use our service may have uploaded your contact
-                information to Instagram. Learn More
+              Люди, які користуються нашим сервісом, могли завантажити вашу контактну
+                інформацію в Instagram. Дізнатися більше
               </p>
               <p className="mt-5 text-center">
-                By signing up, you agree to our Terms , Privacy Policy and
-                Cookies Policy .
+              Реєструючись, ви погоджуєтеся з нашими Умовами, Політикою конфіденційності та
+                Політика щодо файлів cookie.
               </p>
               <Button
                 className="w-full"
@@ -142,7 +142,7 @@ if(auth.signup?.username){
                 type="submit"
                 isLoading={formikProps.isSubmitting}
               >
-                Sign Up
+                Зареєструватися
               </Button>
             </Form>
           )}
@@ -150,7 +150,7 @@ if(auth.signup?.username){
       </Box>
     </div>
     <div className="w-full border border-slate-300 mt-5">
-<p className="text-center py-2">If You Have Already Account <span onClick={()=>navigate("/login")} className="ml-2 text-blue-700 cursor-pointer">Sign In</span></p>
+<p className="text-center py-2">Якщо у вас вже є обліковий запис <span onClick={()=>navigate("/login")} className="ml-2 text-blue-700 cursor-pointer">Увійдіть</span></p>
       </div>
     </div>
   

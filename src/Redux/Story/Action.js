@@ -2,7 +2,7 @@ import { FETCH_FOLLOWING_USER_STORY, FETCH_USER_STORY } from "./ActionType";
 
 export const findFollowingUserStory = (data) => async (dispatch) => {
   const res = await fetch(
-    `http://localhost:5454/api/stories/f/${data.userIds}`,
+    `http://localhost:8080/api/stories/f/${data.userIds}`,
     {
       method: "GET",
       headers: {
@@ -19,7 +19,7 @@ export const findFollowingUserStory = (data) => async (dispatch) => {
 export const findStoryByUserId = (data) => async (dispatch) => {
   try {
     const res = await fetch(
-      `http://localhost:5454/api/stories/${data.userId}`,
+      `http://localhost:8080/api/stories/${data.userId}`,
       {
         method: "GET",
         headers: {
