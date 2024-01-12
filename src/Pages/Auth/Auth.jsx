@@ -14,11 +14,11 @@ const Auth = () => {
             <div className=" h-[35.3rem] w-[23rem]">
               <img
               className="h-full w-full"
-              src="https://res.cloudinary.com/dnbw04gbs/image/upload/v1679494375/home-phones-2x-edited_glksxn.png"
+              src="./img/phone_login.png"
               alt="Instagram Homepage"
             />
-            <di className="mobileWallpaper rounded-3xl absolute top-6 h-[33rem] w-[15.7rem] w- right-3">
-            </di>
+            <div className="mobileWallpaper rounded-3xl absolute top-6 h-[33rem] w-[15.7rem] w- right-3">
+            </div>
 
             </div>
             

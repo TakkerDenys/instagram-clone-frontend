@@ -1,5 +1,5 @@
 .mobileWallpaper{
-    background-image: url("https://res.cloudinary.com/dnbw04gbs/image/upload/v1679490783/screenshot2_m2zc0v.png");
+    background-image: url("/public/img/direct_slide.png");
     animation: changeBg 8s infinite;
 
 }
@@ -7,15 +7,15 @@
 
 @keyframes changeBg {
     0% {
-      background-image: url('https://res.cloudinary.com/dnbw04gbs/image/upload/v1679490221/screenshot4_hb7xtr.png');
+      background-image: url('/public/img/img_photo_1.png');
     }
     25% {
-      background-image: url('https://res.cloudinary.com/dnbw04gbs/image/upload/v1679490683/screenshot1_1_lnvvd8.png');
+      background-image: url('/public/img/img_photo_2.png');
     }
     50%{
-background-image: url("https://res.cloudinary.com/dnbw04gbs/image/upload/v1679492135/screenshot3_ywhgnv.png");
+      background-image: url("/public/img/img_photo_3.png");
     }
     75% {
-      background-image: url('https://res.cloudinary.com/dnbw04gbs/image/upload/v1679490783/screenshot2_m2zc0v.png');
+      background-image: url('/public/img/img_photo_4.png');
     }
   }
