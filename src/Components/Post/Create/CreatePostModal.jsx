@@ -61,37 +61,22 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
     setIsDragOver(false);
   }
 
-  const handleOnChange = async (e) => {
+  const handleOnChange = async(e) => {
+    console.log(e.target.value);
+
     const file = e.target.files[0];
-    if (file && (file.type.startsWith("image/") || file.type.startsWith("video/"))) {
+    if (
+      file &&
+      (file.type.startsWith("image/") || file.type.startsWith("video/"))
+    ) {
       setFile(file);
-  
-      // Отримайте URL-адресу зображення з Cloudinary
-      const formData = new FormData();
-      formData.append("file", file);
-      
-      try {
-        const response = await fetch("http://localhost:8080/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-  
-        if (response.ok) {
-          const cloudinaryData = await response.json();
-          setPostData((prevValues) => ({ ...prevValues, image: cloudinaryData.url }));
-        } else {
-          // Обробка помилок під час відправлення на Cloudinary
-          console.error("Не вдалося завантажити файл на Cloudinary");
-        }
-      } catch (error) {
-        console.error("Помилка під час відправлення файлу на сервер", error);
-      }
+      const url = await uploadToCloudinary(file);
+      setPostData((prevValues)=>({...prevValues, image:url}));
     } else {
       setFile(null);
-      alert("Будь ласка, виберіть зображення або відеофайл.");
+      alert("Будь ласка, виберіть зображення/відеофайл.");
     }
   };
-  
 
   const handleSubmit = async () => {
     const data={
