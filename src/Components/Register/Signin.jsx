@@ -39,7 +39,7 @@ const Signin = () => {
     if (user?.reqUser?.username && token) {
       navigate(`/${user.reqUser?.username}`);
       toast({
-        title: "signin successfull",
+        title: "Успішна авторизація",
         status: "success",
         duration: 8000,
         isClosable: true,

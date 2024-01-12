@@ -17,7 +17,7 @@ function ChangeProfilePhotoModal({ isOpen, onOpen, onClose,handleProfileImageCha
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader textAlign={"center"}> фівф</ModalHeader>
+          <ModalHeader textAlign={"center"}>Редагування профілю</ModalHeader>
 
           <ModalBody>
             <div className="flex flex-col items-center">

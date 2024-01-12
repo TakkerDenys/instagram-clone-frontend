@@ -67,7 +67,7 @@ setIsFollow(isFollowing)
               )}
             </button>
             <button className="text-xs py-1 px-5 bg-slate-100 hover:bg-slate-300 rounded-md font-semibold">
-              {isRequser ? "Add tools" : "Повідомлення"}
+              {isRequser ? "Додати інструменти" : "Повідомлення"}
             </button>
             <TbCircleDashed className="text-xl" />
           </div>

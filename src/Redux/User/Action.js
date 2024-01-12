@@ -52,12 +52,10 @@ try {
   console.log("catch error - ", error)
   
 }
-  
 };
 
 export const findByUserIdsAction = (data) => async (dispatch) => {
   try {
-
     const res = await fetch(`http://localhost:8080/api/users/m/${data.userIds}`, {
       method: "GET",
 

@@ -144,8 +144,7 @@ const EditProfileForm = () => {
                 {...formik.getFieldProps("username")}
               />
               <FormHelperText className="text-xs">
-              У більшості випадків ви зможете змінити своє ім'я користувача на
-                ashok.zarmariya ще протягом 14 днів. Дізнатися більше
+              У більшості випадків ви зможете змінити своє ім'я користувача протягом 14 днів. Дізнатися більше
               </FormHelperText>
             </div>
           </FormControl>

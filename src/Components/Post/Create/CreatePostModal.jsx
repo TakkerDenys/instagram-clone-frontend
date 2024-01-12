@@ -18,18 +18,18 @@ import { createPost } from "../../../Redux/Post/Action";
 import { uploadToCloudinary } from "../../../Config/UploadToCloudinary";
 import CommentModal from "../../Comment/CommentModal";
 
-
-
 const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
   const finalRef = React.useRef(null);
   const [file, setFile] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
-  
-  const dispatch=useDispatch();
-  const token=localStorage.getItem("token");
-  const {user}=useSelector(store=>store)
 
-  const [postData, setPostData] = useState({ image: '', caption: '',location:"" });
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { user } = useSelector((store) => store);
+
+  const [postData, setPostData] = useState({ image: '', caption: '', location: "" });
+
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,17 +61,26 @@ const CreatePostModal = ({ onOpen, isOpen, onClose }) => {
     setIsDragOver(false);
   }
 
-  const handleOnChange = async(e) => {
-    console.log(e.target.value);
-
+  const handleOnChange = async (e) => {
     const file = e.target.files[0];
-    if (
-      file &&
-      (file.type.startsWith("image/") || file.type.startsWith("video/"))
-    ) {
+    if (file && (file.type.startsWith("image/") || file.type.startsWith("video/"))) {
       setFile(file);
-      const url = await uploadToCloudinary(file);
-      setPostData((prevValues)=>({...prevValues, image:url}));
+
+      // Створіть URL для зображення/відео
+      const fileURL = URL.createObjectURL(file);
+
+      // Збережіть файл локально в папці img у каталозі public
+      const localPath = `img/${file.name}`;
+      const localURL = process.env.PUBLIC_URL + '/' + localPath;
+
+      setPostData((prevValues) => ({ ...prevValues, image: localURL }));
+
+      // Створіть FormData для відправки файлу на сервер
+      const formData = new FormData();
+      formData.append("file", file);
+
+      // Використовуйте uploadToCloudinary для відправки на сервер, або іншого методу
+      // const url = await uploadToCloudinary(file);
     } else {
       setFile(null);
       alert("Будь ласка, виберіть зображення/відеофайл.");

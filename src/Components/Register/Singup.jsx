@@ -46,7 +46,7 @@ if(auth.signup?.username){
   setIsSignup(true);
   navigate("/login")
   toast({
-    title: 'Обліковий запис успішно створено',
+    title: 'Успішна реєстрація',
     status: 'success',
     duration: 8000,
     isClosable: true,
