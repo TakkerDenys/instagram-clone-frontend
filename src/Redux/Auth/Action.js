@@ -1,13 +1,3 @@
-// export const signinAction = (data) => async (dispatch) => {
-//   const res = await fetch("http://localhost:8080/signin", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: "Basic " + btoa(data.username + ":" + data.password),
-//     },
-//   });
-//   const token = await res.headers.get("Authorization");
-
 import { SIGN_IN, SIGN_UP } from "./ActionType";
 
 export const signinAction = (data) => async (dispatch) => {
