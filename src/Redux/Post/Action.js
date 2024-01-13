@@ -13,7 +13,7 @@ import {
 export const createPost = (data) => async (dispatch) => {
 
   try {
-      const res = await fetch("http://localhost:8080/api/posts/create", {
+      const res = await fetch("http://94.153.144.18:8080/api/posts/create", {
     method: "POST",
 
     headers: {
@@ -39,7 +39,7 @@ export const findUserPost = (data) => async (dispatch) => {
   try {
     
   const res = await fetch(
-    `http://localhost:8080/api/posts/following/${data.userIds}`,
+    `http://94.153.144.18:8080/api/posts/following/${data.userIds}`,
     {
       method: "GET",
 
@@ -70,7 +70,7 @@ export const reqUserPostAction = (data) => async (dispatch) => {
   try {
     
   const res = await fetch(
-    `http://localhost:8080/api/posts/following/${data.userId}`,
+    `http://94.153.144.18:8080/api/posts/following/${data.userId}`,
     {
       method: "GET",
 
@@ -101,7 +101,7 @@ export const likePostAction = (data) => async (dispatch) => {
   try {
     
   const res = await fetch(
-    `http://localhost:8080/api/posts/like/${data.postId}`,
+    `http://94.153.144.18:8080/api/posts/like/${data.postId}`,
     {
       method: "PUT",
 
@@ -132,7 +132,7 @@ export const unLikePostAction = (data) => async (dispatch) => {
   try {
     
   const res = await fetch(
-    `http://localhost:8080/api/posts/unlike/${data.postId}`,
+    `http://94.153.144.18:8080/api/posts/unlike/${data.postId}`,
     {
       method: "PUT",
 
@@ -161,7 +161,7 @@ export const unLikePostAction = (data) => async (dispatch) => {
 export const savePostAction = (data) => async (dispatch) => {
 
   try {
-    const res = await fetch(`http://localhost:8080/api/posts/save_post/${data.postId}`, {
+    const res = await fetch(`http://94.153.144.18:8080/api/posts/save_post/${data.postId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -182,7 +182,7 @@ export const savePostAction = (data) => async (dispatch) => {
 export const unSavePostAction = (data) => async (dispatch) => {
 
   try {
-    const res = await fetch(`http://localhost:8080/api/posts/unsave_post/${data.postId}`, {
+    const res = await fetch(`http://94.153.144.18:8080/api/posts/unsave_post/${data.postId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -202,7 +202,7 @@ export const unSavePostAction = (data) => async (dispatch) => {
 
 export const findPostByIdAction=(data)=>async(dispatch)=>{
   try {
-    const res=await fetch(`http://localhost:8080/api/posts/${data.postId}`,{
+    const res=await fetch(`http://94.153.144.18:8080/api/posts/${data.postId}`,{
     method:"GET",
     headers:{
       "Content-Type":"application/json",
@@ -220,7 +220,7 @@ export const findPostByIdAction=(data)=>async(dispatch)=>{
 export const deletePostAction = (data) => async (dispatch) => {
 
   try {
-    const res = await fetch(`http://localhost:8080/api/posts/delete/${data.postId}`, {
+    const res = await fetch(`http://94.153.144.18:8080/api/posts/delete/${data.postId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
