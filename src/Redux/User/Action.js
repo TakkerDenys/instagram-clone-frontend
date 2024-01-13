@@ -9,7 +9,7 @@ import {
 
 export const getUserProfileAction = (token) => async (dispatch) => {
   try {
-      const res = await fetch("http://localhost:8080/api/users/req", {
+      const res = await fetch("http://192.168.88.176:8080/api/users/req", {
     method: "GET",
 
     headers: {
@@ -31,7 +31,7 @@ export const findByUsernameAction = (data) => async (dispatch) => {
 try {
 
   const res = await fetch(
-    `http://localhost:8080/api/users/username/${data.username}`,
+    `http://192.168.88.176:8080/api/users/username/${data.username}`,
     {
       method: "GET",
 
@@ -56,7 +56,7 @@ try {
 
 export const findByUserIdsAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:8080/api/users/m/${data.userIds}`, {
+    const res = await fetch(`http://192.168.88.176:8080/api/users/m/${data.userIds}`, {
       method: "GET",
 
       headers: {
@@ -83,7 +83,7 @@ export const followUserAction = (data) => async (dispatch) => {
  
   try {
 
-    const res = await fetch(`http://localhost:8080/api/users/follow/${data.userId}`, {
+    const res = await fetch(`http://192.168.88.176:8080/api/users/follow/${data.userId}`, {
       method: "PUT",
 
       headers: {
@@ -108,7 +108,7 @@ export const unFollowUserAction = (data) => async (dispatch) => {
  
   try {
 
-    const res = await fetch(`http://localhost:8080/api/users/unfollow/${data.userId}`, {
+    const res = await fetch(`http://192.168.88.176:8080/api/users/unfollow/${data.userId}`, {
       method: "PUT",
 
       headers: {
@@ -133,7 +133,7 @@ export const searchUserAction = (data) => async (dispatch) => {
  console.log("jwt --- ",data.jwt)
   try {
 
-    const res = await fetch(`http://localhost:8080/api/users/search?q=${data.query}`, {
+    const res = await fetch(`http://192.168.88.176:8080/api/users/search?q=${data.query}`, {
       method: "GET",
 
       headers: {
@@ -159,7 +159,7 @@ export const editUserDetailsAction = (data) => async (dispatch) => {
   console.log("data edit user --- ",data)
    try {
  
-     const res = await fetch(`http://localhost:8080/api/users/account/edit`, {
+     const res = await fetch(`http://192.168.88.176:8080/api/users/account/edit`, {
        method: "PUT",
  
        headers: {
